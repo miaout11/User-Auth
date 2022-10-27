@@ -15,14 +15,15 @@ router.post('/', (req, res) => {
         req.session.user = user.firstname
         return res.render('index', { name: user.firstname })
       } else {
-        const fail = 'Invalid email or password, please try again!'
-        return res.render('login', { fail })
+        const fail = 'Invalid password, please try again!'
+        return res.render('login', { email, fail })
       }
     })
     .catch(error => {
       console.error(error)
+      const fail = 'Invalid email, please try again!'
+      return res.render('login', { email, fail })
     })
 })
-
 
 module.exports = router
