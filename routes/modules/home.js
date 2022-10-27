@@ -10,4 +10,11 @@ router.get('/', (req, res) => {
   return res.redirect('/login')
 })
 
+router.get('/logout', (req, res) => {
+  req.session.destroy(() => {
+    console.log('session destroyed!')
+  })
+  res.redirect('/login')
+})
+
 module.exports = router
